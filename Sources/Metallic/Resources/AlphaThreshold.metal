@@ -2,6 +2,10 @@
 // Copyright (c) Nathan Tannar
 //
 
+#include <TargetConditionals.h>
+
+#if !TARGET_OS_WATCH
+
 #include <metal_stdlib>
 #include <SwiftUI/SwiftUI.h>
 
@@ -19,3 +23,5 @@ half4 alphaThreshold(float2 position, SwiftUI::Layer layer)
         return half4(0.0);
     }
 }
+
+#endif

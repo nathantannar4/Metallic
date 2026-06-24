@@ -1,11 +1,11 @@
 version: 1
 builder:
   configs:
-    - documentation_targets: [Turbocharger]
+    - documentation_targets: [Metallic]
       platform: macos
-    - documentation_targets: [Turbocharger]
+    - documentation_targets: [Metallic]
       platform: ios
-    - documentation_targets: [Turbocharger]
+    - documentation_targets: [Metallic]
       platform: tvos
-    - documentation_targets: [Turbocharger]
+    - documentation_targets: [Metallic]
       platform: watchos

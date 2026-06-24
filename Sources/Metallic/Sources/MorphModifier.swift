@@ -2,12 +2,14 @@
 // Copyright (c) Nathan Tannar
 //
 
+#if !os(watchOS)
+
 import SwiftUI
 
 /// A transition that morphs the view
 @frozen
 @MainActor @preconcurrency
-@available(iOS 17.0, macOS 14.0, tvOS 17.0, watchOS 10.0, *)
+@available(iOS 17.0, macOS 14.0, tvOS 17.0, *)
 public struct MorphTransition: Transition {
 
     public init() { }
@@ -26,7 +28,7 @@ public struct MorphTransition: Transition {
     }
 }
 
-@available(iOS 17.0, macOS 14.0, tvOS 17.0, watchOS 10.0, visionOS 1.0, *)
+@available(iOS 17.0, macOS 14.0, tvOS 17.0, visionOS 1.0, *)
 extension Transition where Self == MorphTransition {
 
     public static var morph: MorphTransition { .init() }
@@ -34,7 +36,7 @@ extension Transition where Self == MorphTransition {
 
 /// A modifier that morphs the view based on an alpha threshold
 @frozen
-@available(iOS 17.0, macOS 14.0, tvOS 17.0, watchOS 10.0, visionOS 1.0, *)
+@available(iOS 17.0, macOS 14.0, tvOS 17.0, visionOS 1.0, *)
 public struct MorphModifier: ViewModifier, Animatable {
 
     public var progress: CGFloat
@@ -71,7 +73,8 @@ public struct MorphModifier: ViewModifier, Animatable {
 
 // MARK: - Previews
 
-@available(iOS 17.0, macOS 14.0, tvOS 17.0, watchOS 10.0, visionOS 1.0, *)
+@available(iOS 17.0, macOS 14.0, tvOS 17.0, visionOS 1.0, *)
+@available(watchOS, unavailable)
 struct MorphTransition_Previews: PreviewProvider {
     static var previews: some View {
         ZStack {
@@ -95,3 +98,5 @@ struct MorphTransition_Previews: PreviewProvider {
         }
     }
 }
+
+#endif

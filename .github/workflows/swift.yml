@@ -24,12 +24,11 @@ jobs:
       run: xcodebuild -scheme Metallic -destination 'platform=macOS,variant=Mac Catalyst' build
     - name: Build for iOS
       run: xcodebuild -scheme Metallic -destination 'platform=iOS Simulator,name=iPhone 16' build
-    - name: Build for watchOS
-      run: xcodebuild -scheme Metallic -destination 'platform=watchOS Simulator,name=Apple Watch Ultra 2 (49mm)' build
     - name: Build for tvOS
       run: xcodebuild -scheme Metallic -destination 'platform=tvOS Simulator,name=Apple TV 4K (3rd generation)' build
     - name: Build for visionOS
       run: xcodebuild -scheme Metallic -destination 'generic/platform=visionOS Simulator' build
+
   build-26:
     runs-on: macos-latest
     steps:
@@ -44,8 +43,6 @@ jobs:
       run: xcodebuild -scheme Metallic -destination 'platform=macOS,variant=Mac Catalyst' build
     - name: Build for iOS
       run: xcodebuild -scheme Metallic -destination 'platform=iOS Simulator,name=iPhone 17' build
-    - name: Build for watchOS
-      run: xcodebuild -scheme Metallic -destination 'platform=watchOS Simulator,name=Apple Watch Ultra 3 (49mm)' build
     - name: Build for tvOS
       run: xcodebuild -scheme Metallic -destination 'platform=tvOS Simulator,name=Apple TV 4K (3rd generation)' build
     - name: Build for visionOS

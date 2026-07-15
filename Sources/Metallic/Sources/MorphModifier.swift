@@ -8,7 +8,6 @@ import SwiftUI
 
 /// A transition that morphs the view
 @frozen
-@MainActor @preconcurrency
 @available(iOS 17.0, macOS 14.0, tvOS 17.0, *)
 public struct MorphTransition: Transition {
 
@@ -61,7 +60,7 @@ public struct MorphModifier: ViewModifier, Animatable {
                         Shader(
                             function: ShaderFunction(
                                 library: ShaderLibrary.bundle(.module),
-                                name: "alphaThreshold"
+                                name: "morph"
                             ),
                             arguments: []
                         ),
@@ -75,7 +74,7 @@ public struct MorphModifier: ViewModifier, Animatable {
 
 @available(iOS 17.0, macOS 14.0, tvOS 17.0, visionOS 1.0, *)
 @available(watchOS, unavailable)
-struct MorphTransition_Previews: PreviewProvider {
+struct MorphModifier_Previews: PreviewProvider {
     static var previews: some View {
         ZStack {
             Preview()
@@ -84,6 +83,7 @@ struct MorphTransition_Previews: PreviewProvider {
 
     struct Preview: View {
         @State var flag = false
+        @State var progress: CGFloat = 0.5
 
         var body: some View {
             VStack {
@@ -94,6 +94,28 @@ struct MorphTransition_Previews: PreviewProvider {
                     .font(.system(size: 100))
                     .transition(.morph)
                     .id(flag)
+
+                ZStack {
+                    Image(systemName: "star.fill")
+                        .modifier(
+                            MorphModifier(
+                                progress: 1 - progress
+                            )
+                        )
+
+                    Image(systemName: "heart.fill")
+                        .modifier(
+                            MorphModifier(
+                                progress: progress
+                            )
+                        )
+                }
+                .font(.system(size: 100))
+
+                #if !os(tvOS)
+                Slider(value: $progress, in: 0...1)
+                    .padding(.horizontal)
+                #endif
             }
         }
     }

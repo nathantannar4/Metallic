@@ -12,7 +12,7 @@
 using namespace metal;
 
 [[ stitchable ]]
-half4 alphaThreshold(float2 position, SwiftUI::Layer layer)
+half4 morph(float2 position, SwiftUI::Layer layer)
 {
     half4 color = layer.sample(position);
     half alpha = color.a;
